@@ -21,9 +21,16 @@ from navadmin_feed import cli
 def test_finds_a_page_at_the_url():
     assert navadmin_feed.fetch("2017") == 250
 
+def test_old_years_have_correct_number_of_members():
+    f = navadmin_feed.fetch("2014")
+    assert f.number_of_posts() == 284
+
+def test_correct_year_is_fetched():
+    f = navadmin_feed.fetch("2014")
+    assert False
 
 @pytest.fixture(params=["2017", "2016", "2015"])
-def response(f):
+def response(year):
     """Sample pytest fixture.
     See more at: http://doc.pytest.org/en/latest/fixture.html
     """
@@ -31,8 +38,8 @@ def response(f):
 
     url = ("http://www.public.navy.mil/bupers-npc/"
            "reference/messages/NAVADMINS/Pages/NAVADMIN{0}.aspx").format(
-               f.param
-    )
+               year.param
+           )
     return requests.get('https://github.com/audreyr/cookiecutter-pypackage')
 
 
