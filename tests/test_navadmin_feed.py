@@ -17,21 +17,35 @@ from navadmin_feed import navadmin_feed
 from navadmin_feed import cli
 
 
-@pytest.fixture
-def response():
+# Request the NAVADMIN page
+def test_finds_a_page_at_the_url():
+    assert navadmin_feed.fetch("2017") == 250
+
+
+@pytest.fixture(params=["2017", "2016", "2015"])
+def response(f):
     """Sample pytest fixture.
     See more at: http://doc.pytest.org/en/latest/fixture.html
     """
-    # import requests
-    # return requests.get('https://github.com/audreyr/cookiecutter-pypackage')
+    import requests
+
+    url = ("http://www.public.navy.mil/bupers-npc/"
+           "reference/messages/NAVADMINS/Pages/NAVADMIN{0}.aspx").format(
+               f.param
+    )
+    return requests.get('https://github.com/audreyr/cookiecutter-pypackage')
 
 
 def test_content(response):
     """Sample pytest test function with the pytest fixture as an argument.
     """
-    # from bs4 import BeautifulSoup
-    # assert 'GitHub' in BeautifulSoup(response.content).title.string
+    from bs4 import BeautifulSoup
+    assert 'NAVADMIN' in BeautifulSoup(response.content).title.string
+
+
 def test_command_line_interface():
+    """Click command line testing
+    """
     runner = CliRunner()
     result = runner.invoke(cli.main)
     assert result.exit_code == 0
