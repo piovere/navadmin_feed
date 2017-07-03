@@ -28,7 +28,13 @@ Script for scraping the Navy NAVADMIN page and converting to a JSON feed.
 Features
 --------
 
-* TODO
+TODO
+--------
+* Modularize more--shift functional flow into command line
+* Add tests
+* Add previous/next year
+* Automatically calculate next fiscal year
+
 
 Credits
 ---------
