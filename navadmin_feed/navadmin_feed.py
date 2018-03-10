@@ -25,7 +25,7 @@ def fetch(year):
 
     return lines[1:]
 
-YEAR = 2017
+YEAR = 2018
 
 def convert(line):
     """Function docstring"""
