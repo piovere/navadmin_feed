@@ -11,6 +11,7 @@ with open('HISTORY.rst') as history_file:
 
 requirements = [
     'Click>=6.0',
+    'requests>=2.14.2',
     'beautifulsoup4>=4.0'
     # TODO: put package requirements here
 ]
