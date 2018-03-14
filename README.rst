@@ -34,6 +34,7 @@ TODO
 * Add tests
 * Add previous/next year
 * Automatically calculate next fiscal year
+* Add ALNAV message feed in addition to NAVADMIN
 
 
 Credits
