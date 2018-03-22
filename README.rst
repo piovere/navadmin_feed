@@ -18,7 +18,7 @@ NAVADMIN feed
      :alt: Updates
 
 
-Script for scraping the Navy NAVADMIN page and converting to a JSON feed.
+Script for scraping the Navy NAVADMIN/ALNAV page and converting to a JSON feed.
 
 
 * Free software: MIT license
@@ -34,8 +34,11 @@ TODO
 * Add tests
 * Add previous/next year
 * Automatically calculate next fiscal year
-* Add ALNAV message feed in addition to NAVADMIN
+* Include timestamp, not just date in feed
 
+COMPLETED
+---------
+* Add ALNAV in addition to NAVADMIN
 
 Credits
 ---------
