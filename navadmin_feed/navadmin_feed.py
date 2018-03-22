@@ -16,13 +16,13 @@ def fetch(year, msg_type):
     
     Parameters
     ----------
-    year : string
+    year : str
     msg_type : {'NAVADMIN', 'ALNAV'}
 
     Returns
     -------
     list
-        List of table rows, each with message information
+        List of table rows (beautifulsoup), each with message information
     
     """
     url = ("http://www.public.navy.mil/bupers-npc/"
@@ -47,7 +47,19 @@ MESSAGE_TYPES = [
 ]
 
 def convert(line):
-    """Function docstring"""
+    """Convert table row into a Message object
+    
+    Parameters
+    ----------
+    line : str
+        A beautifulsoup row containing information about a message.
+    
+    Returns
+    -------
+    Message
+        A message object suitable for converting into feed item.
+    
+    """
     cells = line.findAll("td")
     msg = Message()
     msg.serial = cells[0].text
