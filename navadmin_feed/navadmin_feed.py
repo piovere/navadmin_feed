@@ -12,7 +12,19 @@ from .message import Message
 
 
 def fetch(year, msg_type):
-    """Function docstring"""
+    """Retrieve HTML table rows of NAVADMIN or ALNAV.
+    
+    Parameters
+    ----------
+    year : string
+    msg_type : {'NAVADMIN', 'ALNAV'}
+
+    Returns
+    -------
+    list
+        List of table rows, each with message information
+    
+    """
     url = ("http://www.public.navy.mil/bupers-npc/"
            "reference/messages/{0}S/Pages/{0}{1}.aspx").format(
                msg_type,
