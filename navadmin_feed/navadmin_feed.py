@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 """Import list of current NAVADMINs and write them to a JSON feed.
 
-
 """
 
 from datetime import date
