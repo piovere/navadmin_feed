@@ -35,6 +35,7 @@ TODO
 * Add previous/next year
 * Automatically calculate next fiscal year
 * Include timestamp, not just date in feed
+* Update tests to account for new function signature
 
 COMPLETED
 ---------
