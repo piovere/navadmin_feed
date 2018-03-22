@@ -1,0 +1,8 @@
+{
+  "tests/test_navadmin_feed.py::test_command_line_interface": true,
+  "tests/test_navadmin_feed.py::test_content[2015]": true,
+  "tests/test_navadmin_feed.py::test_content[2016]": true,
+  "tests/test_navadmin_feed.py::test_content[2017]": true,
+  "tests/test_navadmin_feed.py::test_correct_year_is_fetched": true,
+  "tests/test_navadmin_feed.py::test_old_years_have_correct_number_of_members": true
+}

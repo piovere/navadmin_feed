@@ -19,14 +19,14 @@ from navadmin_feed import cli
 
 # Request the NAVADMIN page
 def test_finds_a_page_at_the_url():
-    assert navadmin_feed.fetch("2017") == 250
+    assert len(navadmin_feed.fetch("2017", "NAVADMIN")) == 310
 
 def test_old_years_have_correct_number_of_members():
-    f = navadmin_feed.fetch("2014")
-    assert f.number_of_posts() == 284
+    f = navadmin_feed.fetch("2014", "NAVADMIN")
+    assert len(f) == 284
 
 def test_correct_year_is_fetched():
-    f = navadmin_feed.fetch("2014")
+    f = navadmin_feed.fetch("2014", "NAVADMIN")
     assert False
 
 @pytest.fixture(params=["2017", "2016", "2015"])

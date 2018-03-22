@@ -8,7 +8,7 @@ from datetime import date
 import json
 import requests
 import bs4
-from message import Message
+from .message import Message
 
 
 def fetch(year, msg_type):
