@@ -11,10 +11,13 @@ import bs4
 from message import Message
 
 
-def fetch(year):
+def fetch(year, msg_type):
     """Function docstring"""
     url = ("http://www.public.navy.mil/bupers-npc/"
-           "reference/messages/NAVADMINS/Pages/NAVADMIN{0}.aspx").format(year)
+           "reference/messages/{0}S/Pages/{0}{1}.aspx").format(
+               msg_type,
+               year
+          )
 
     result = requests.get(url)
 
@@ -26,6 +29,10 @@ def fetch(year):
     return lines[1:]
 
 YEAR = 2018
+MESSAGE_TYPES = [
+    "ALNAV",
+    "NAVADMIN"
+]
 
 def convert(line):
     """Function docstring"""
@@ -38,18 +45,19 @@ def convert(line):
 
     return msg
 
-def makefeed(year):
+def makefeed(year, msg_type):
     """Function docstring"""
-    lines = fetch(year)
-
+    lines = fetch(year, msg_type)
+    
     message_list = [convert(l) for l in lines]
 
     feed = {
         'version': 'https://jsonfeed.org/version/1',
-        'title': 'Unofficial NAVADMIN Feed',
+        'title': 'Unofficial {} Feed'.format(msg_type),
         'home_page_url': ('http://www.public.navy.mil/bupers-npc/reference/'
-                          'messages/NAVADMINS/Pages/default.aspx'),
-        'feed_url': 'https://piovere.net/navadmins.json'
+                          'messages/{0}S/Pages/default.aspx'.format(msg_type)),
+        'feed_url': 'https://techie.net/~piovere/{0}.json'.format(
+            msg_type).lower()
     }
 
     items = [i.json_feed() for i in message_list]
@@ -58,5 +66,7 @@ def makefeed(year):
 
     return feed
 
-with open('navadmins.json', 'w') as f:
-    json.dump(makefeed(YEAR), f, indent=4)
+for m in MESSAGE_TYPES:
+    fn = '{}s.json'.format(m.lower())
+    with open(fn, 'w') as f:
+        json.dump(makefeed(YEAR, m), f, indent=4)
