@@ -63,3 +63,9 @@ target/
 
 # pyenv python configuration file
 .python-version
+
+# VS Code config
+.vscode
+
+# Mac stuff
+.DS_Store
