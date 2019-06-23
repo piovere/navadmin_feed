@@ -2,5 +2,8 @@
 {
     "editor.wordWrap": "on",
     "editor.wordWrapColumn": 78,
-    "editor.rulers": [78]
+    "editor.rulers": [
+        78
+    ],
+    "python.pythonPath": "/Users/jrpl/anaconda3/envs/naf/bin/python"
 }
